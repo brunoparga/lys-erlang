@@ -1,21 +1,11 @@
 -module(ppool_supersup).
 -behaviour(supervisor).
 
--export([start_link/0, stop/0, start_pool/3, stop_pool/1]).
+-export([start_link/0, start_pool/3, stop_pool/1]).
 -export([init/1]).
 
 start_link() ->
     supervisor:start_link({local, ppool}, ?MODULE, []).
-
-
-%% technically, a supervisor cannot be killed in
-%%  an easy way. Let's do it brutally!
-stop() ->
-    case whereis(ppool) of
-        P when is_pid(P) ->
-            exit(P, kill);
-        _ -> ok
-    end.
 
 init([]) ->
     MaxRestart = 6,

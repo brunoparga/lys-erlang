@@ -2,7 +2,7 @@
     application,
     ppool,
     [
-        {description, "A process pool manager},
+        {description, "A process pool manager"},
         {vsn, "1.0.0"},
         {
             modules,
@@ -17,4 +17,4 @@
         {registered, [ppool]},
         {mod, {ppool, []}}
     ]
-}
+}.
