@@ -2,7 +2,7 @@
     application,
     ppool,
     [
-        {description, "A process pool manager"},
+        {description, "Run and enqueue different concurrent tasks"},
         {vsn, "1.0.0"},
         {
             modules,
@@ -15,6 +15,7 @@
             ]
         },
         {registered, [ppool]},
-        {mod, {ppool, []}}
+        {mod, {ppool, []}},
+        {applications, [stdlib, kernel]}
     ]
 }.
