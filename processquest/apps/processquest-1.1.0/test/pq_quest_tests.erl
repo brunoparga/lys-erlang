@@ -12,7 +12,7 @@ format_test_() ->
 
 is_random_test_() ->
     F = fun(Parent, Ref) -> fun() ->
-        <<A:32,B:32,C:32>> = crypto:rand_bytes(12),
+        <<A:32,B:32,C:32>> = crypto:strong_rand_bytes(12),
         random:seed({A,B,C}),
         Entries = [pq_quest:fetch() || _ <- lists:seq(1,100)],
         Parent ! {Ref, Entries}

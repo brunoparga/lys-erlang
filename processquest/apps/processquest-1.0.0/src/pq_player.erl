@@ -37,9 +37,9 @@ init({Name, Opts}) ->
     %% Properly seeding stuff. If not doing this, the random module will
     %% seed it based on a slightly unique time value. However, when starting
     %% many processes at about the same time, the seeds can be very close
-    %% and give barely random results. The crypto:rand_bytes/1 function
+    %% and give barely random results. The crypto:strong_rand_bytes/1 function
     %% allows for much better seeding.
-    <<A:32, B:32, C:32>> = crypto:rand_bytes(12),
+    <<A:32, B:32, C:32>> = crypto:strong_rand_bytes(12),
     random:seed({A,B,C}),
     %% The first event, to start the FSM
     gen_fsm:send_event(self(), kill),

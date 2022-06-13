@@ -32,7 +32,7 @@ start_link(Socket) ->
 
 init(Socket) ->
     %% properly seeding the process
-    <<A:32, B:32, C:32>> = crypto:rand_bytes(12),
+    <<A:32, B:32, C:32>> = crypto:strong_rand_bytes(12),
     random:seed({A,B,C}),
     %% Because accepting a connection is a blocking function call,
     %% we can not do it in here. Forward to the server loop!
